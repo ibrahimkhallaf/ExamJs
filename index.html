@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yummy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body > 
+
+    <div class="side-nav d-flex Z-index-1000  " >
+        <div class="nav-main position-relative py-4 px-4 height-100vh d-flex flex-column justify-content-between ">
+            <div class="links">
+                <ul class="list-unstyled top-0 overflow-hidden">
+                    <li class="py-2 position-relative cursor-pointer" onclick="SearchInput(),CloseNav()">Search</li>
+                    <li onclick="GetAllCategories(), CloseNav()" class="py-2 position-relative cursor-pointer">Categories</li>
+                    <li onclick="GetAllArea() ,CloseNav();" class="py-2 position-relative cursor-pointer">Area</li>
+                    <li onclick="GetAllIngredients(),CloseNav()" class="py-2 position-relative cursor-pointer">Ingredients</li>
+                    <li onclick="DisplayContact(),CloseNav()" class="py-2 position-relative cursor-pointer">Contact Us</li>
+                </ul>
+            </div>
+            <div class="links-footer">
+                <div class="icons">
+                    <i class="fa-brands fa-facebook"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <div class="footer">
+                    <p>Copyright Â© 2019 All Rights <br>Reserved</p>
+                </div>
+            </div>
+        </div>
+        <div class="nav-header bg-white text-dark py-4 px-2 height-100vh d-flex flex-column justify-content-between text-center">
+            <div class="img">
+                <img src="images/logo.png" class="img-logo" alt="">
+            </div>
+            <i class="toggel-icon fa-solid fa-bars fa-2x "></i>
+            <div class="footer">
+                <i class="fa-solid fa-globe d-block py-2"></i>
+                <i class="fa-solid fa-share-nodes py-2 d-block" ></i>
+            </div>
+        </div>
+    </div>
+    
+    <section class="container w-75 inputsCont ">
+    </section>
+    
+    <section class="container py-5 height-100vh" id="main-section">
+        <div class="row row-cols-1 g-4 row-cols-md-2 row-cols-lg-4  " id="rowDataMeals">   
+            
+        </div>
+    </section>
+
+    <section class="details d-none height-100vh" id="detailSec" >
+        <div class="container py-5">
+          <header class="d-flex flex-row align-items-center justify-content-end">
+            <button type="button" id="btn-close" class="btn-close bg-light" aria-label="Close"></button>
+          </header>
+          <div class="row" id="Details_row">
+
+          </div>
+        </div>
+      </section>
+
+    <section id="formSec" class=" d-none d-flex justify-content-center align-items-center height-100vh ">
+    <div class="container w-75 text-center text-white">
+            <div class="row row-cols-1 row-cols-md-2  ">
+                <div class="col">
+                    <div class="mb-3">
+                        <input type="text" oninput="NameValidation()" class="form-control " id="nameInput" placeholder="Enter By Name">
+                    </div>
+                    <div class="alert mt-2 d-none alert-warning w-100" role="alert" id="nameAlert">
+                        Please,Enter A valid Name
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <input type="email" class="form-control " oninput="EmailAvailabilty()" id="emailInput" placeholder="Enter By Email">
+                    </div>
+                    <div class="alert mt-2 d-none alert-warning w-100" role="alert" id="emailAlert">
+                        Email not valid *exemple@yyy.zzz
+                    </div>
+                    
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <input type="text" class="form-control " oninput="phoneAvailabilty()" id="NumberInput" placeholder="Enter Your Number">
+                    </div>
+                    <div class="alert mt-2 d-none alert-warning w-100" role="alert" id="numAlert">
+                        Please,Enter A valid Number
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <input type="text" class="form-control "oninput="ageAvailabilty()" id="Ageinput" placeholder="Enter Your Age">
+                    </div>
+                    <div class="alert mt-2 d-none alert-warning w-100" role="alert" id="ageAlert">
+                        Please,Enter A valid Age
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <input type="password" class="form-control " oninput="passAvailabilty()" id="passInput" placeholder="Enter your password">
+                    </div>
+                    <div class="alert mt-2 d-none alert-warning w-100" role="alert" id="passAlert">
+                        Enter valid password *Minimum eight characters, at least one letter and one number:*
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                    <input type="password" class="form-control " oninput="repassAvailabilty()" id="RepassInput" placeholder="Repassword">
+                    </div>
+                    <div class="alert mt-2 d-none alert-warning w-100" role="alert" id="repassAlert">
+                        Enter valid repassword
+                    </div>
+                </div>
+            </div>
+                
+            <button class="btn btn-outline-danger my-3 " disabled id="btn-sub">Submit</button>
+        </div>
+    </section>
+
+    <div class="loading position-fixed  d-flex top-0 d-none start-0 end-0 bottom-0 bg-black justify-content-center align-items-center">
+        <i class="fa fa-spinner fa-spin fa-5x"></i>
+    </div>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+</html>
